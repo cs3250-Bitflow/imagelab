@@ -468,6 +468,11 @@ public class ImgProvider extends JComponent {
         m.playTune(tune);
     }
     
+    public void pause()
+    {
+        
+    }
+    
     /**
      * Display this image a line at a time in a window.
      * @param name The title for the window.

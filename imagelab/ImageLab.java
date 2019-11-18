@@ -123,15 +123,23 @@ public class ImageLab {
         JMenuBar mbar = new JMenuBar();
         JMenu file = new JMenu("File");
         mbar.add(file);
+        
         JMenuItem open = new JMenuItem("Open", 'O');
         file.add(open);
         open.addActionListener(makeOpenListener());
+        
         JMenuItem play = new JMenuItem("Play", 'P');
         file.add(play);
         play.addActionListener(makePlayListener());
+        
+        JMenuItem pause = new JMenuItem("Pause", 'X');
+        file.add(pause);
+        play.addActionListener(makePauseListener());
+        
         JMenuItem save = new JMenuItem("Save", 'S');
         file.add(save);
         save.addActionListener(makeSaveListener());
+        
         JMenuItem quit = new JMenuItem("Quit", 'Q');
         file.add(quit);
         quit.addActionListener(new ActionListener() {
@@ -140,15 +148,19 @@ public class ImageLab {
                 }
             }
         );
+        
         JMenu filter = new JMenu("Filter");
         mbar.add(filter);
+        
         //Find filters and build corresponding menu items.
         //Look at each .class file in filterDir.
         //Do the classForName stuff and enter into filter menu.
         //System.out.println("**********finding filters***********");
         FileSystemView fsv = FileSystemView.getFileSystemView();
+        
         //File [] fil = fsv.getFiles(new File("."),true);
         File [] fil = fsv.getFiles(new File(filterDir), true);
+        
         //System.out.println("Found " + fil.length + " possible filters");
         String clName = " ";        //holds name of class
         for (int k=0; k<fil.length; k++) {
@@ -309,6 +321,20 @@ public class ImageLab {
         };//new ActionListener
     }//makePlayListener
 
+    public static ActionListener makePauseListener() {
+        final JFrame myframe = frame;
+        return new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ImgProvider improvider = impro; //The imgProvider holding the image
+                if (improvider == null) {
+                    JOptionPane.showMessageDialog(myframe,"First select the image to pause");
+                    return;
+                }
+                improvider.pause();
+            }
+        };
+    }
+    
     /**
      * Create an ActionListener for saving an image to a file.
      */

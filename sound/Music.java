@@ -204,6 +204,8 @@ public class Music {
             System.out.println("[Line " + (line++) + "] ");
             chord = tuneIt.next();
             playChord(chord,duration);
+            
+            //TODO look for interruptions
         }
         silence();
     }
