@@ -28,6 +28,8 @@ public class Music {
     /** Default number of Channels */
     int numChannels = 1;
     
+    private boolean isAudioPlaying;
+    
     /**
      * Construct Music using Note.Vibes instrument.
      */
@@ -57,6 +59,7 @@ public class Music {
         velocity = STD_VELOCITY;
         numChannels = numCh;
         establishSynthesizer(numChannels, instrument);
+        isAudioPlaying = false;
     }
 
     /**
@@ -200,6 +203,7 @@ public class Music {
         /** Tune iterator */
         Iterator<Chord> tuneIt = tune.iterator();
         int line = 0;
+        isAudioPlaying = true;
         while (tuneIt.hasNext()) {
             System.out.println("[Line " + (line++) + "] ");
             chord = tuneIt.next();
@@ -220,6 +224,12 @@ public class Music {
             note = noteHistory.get(i);
             channels[note.channel()].noteOff(note.pitch(),note.velocityOn());
         }
+        isAudioPlaying = false;
+    }
+    
+    public boolean isAudioPlaying()
+    {
+        return isAudioPlaying;
     }
 
 }
