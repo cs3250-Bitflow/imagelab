@@ -92,6 +92,8 @@ public class DisplayImage extends ILFrame {
         myMenuBar.add(ImageLab.newFileMenu(this));
         myMenuBar.add(ImageLab.newFilterMenu());
         setJMenuBar(myMenuBar);
+        setTitle(title);
+        setUndecorated(true);
         setVisible(true);
     }
 

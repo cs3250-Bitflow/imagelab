@@ -108,7 +108,8 @@ public class ImageLab {
             }
         );
         //cpane.add(jButton2);
-
+        
+        frame.setDefaultLookAndFeelDecorated(true);
         menubar = buildMenus();
         frame.setJMenuBar(menubar);
         frame.setBounds(400, 30, 300, 100);
