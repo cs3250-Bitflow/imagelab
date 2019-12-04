@@ -60,7 +60,7 @@ public class DisplayImage extends ILFrame {
         if (imp==null) System.out.println("\n\n***DisplayImage: imp is null!!! ***\n\n");
         setTitle(title);
         setUndecorated(false);
-        //setBackground(new Color(255,255,255,0)); //alpha of background set to 0 for transparency
+        setBackground(new Color(255,255,255));
         improvider  = imp;
         int[] pix = imp.pix;
         int[] showpix = pix;
